@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Node.js WebSocket chat</title>
+</head>
+<body>
+Enter your Name:
+<input type="text" id="nme">
+Your message:
+<input type="text" id="msg">
+<div id="chatbox">Messages<br></div>
+<script src="http://192.168.1.172:4000/socket.io/socket.io.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>    
+<script type="text/javascript">
+var messagesElement = document.getElementById('messages');
+function disptext(msg)
+{
+     var simp=msg+"<br>"; 
+    $("#chatbox").append(simp);   
+}
+
+
+var socket = io.connect('http://192.168.1.172:4000');
+socket.on('serverMessage', function(content) {
+        disptext(content);
+});
+var msgbx1 = document.getElementById('msg');    
+var nmebx1 = document.getElementById('nme');
+msgbx1.onkeydown = function(keyboardEvent) {
+if (keyboardEvent.keyCode === 13) {
+socket.emit('clientMessage', msgbx1.value);
+msgbx1.value = '';
+return false;
+} else {
+return true;
+}
+};
+nmebx1.onkeydown = function(keyboardEvent) {
+if (keyboardEvent.keyCode === 13) {
+socket.emit('setname', nmebx1.value);
+nmebx1.disabled="true";    
+nmebx1.value = '';
+return false;
+} 
+else {
+return true;
+}
+};    
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Smart EnvI</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>  
+<body>
+<div id="title">Smart EnvI</div>
+<div id="add_dev_form">
+    <fieldset>
+        <legend>Add New Query</legend>
+     <form id="add_query">
+        <div class="form_left">
+              Type<br><br>
+              Params 1<br><br>
+              Params 2<br><br>
+              Alerts<br><br>
+              
+         </div> 
+         <div class="form_right">
+                <select id="type">
+                    <option value="turn_off">Switch Off PC</option>
+                    <option value="hibernate">Hibernate PC</option>
+                    <option value="sleep">Sleep</option>
+                </select><br><br>
+                <select id="param_1">
+                    <option value="everday">Everyday</option>
+                </select><br><br>
+                <select id="param_2">
+                        <option value="7.00pm" selected>7.00pm</option>
+                        <option value="6.00pm">6.00pm</option>
+                        <option value="5.00pm">5.00pm</option>
+                        <option value="4.00pm">4.00pm</option>
+                 </select><br><br>
+                 <input type="checkbox" value="mobile_true">Mobile&nbsp;&nbsp;<input type="checkbox" value="email_true">E-mail
+         </div>
+         <center><input type="submit" value="Request For Approval">&nbsp;&nbsp;<button id="reset" onclick="reset(add_query)">Reset</button></center>
+         </form>
+    </fieldset>
+</div>    
+ </body>
+</html>    

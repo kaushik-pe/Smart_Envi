@@ -1,0 +1,99 @@
+mysql> use smart_envi;
+Database changed
+mysql> show tables
+    -> ;
++----------------------+
+| Tables_in_smart_envi |
++----------------------+
+| dependant_dev        |
+| dev_details          |
+| dev_group            |
+| dev_query            |
+| users                |
++----------------------+
+5 rows in set 
+
+
+
+mysql> desc dependant_dev;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| ip_addr      | varchar(30) | YES  |     | NULL    |       |
+| socket_id_1  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_2  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_3  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_4  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_5  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_6  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_7  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_8  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_9  | varchar(30) | YES  |     | NULL    |       |
+| socket_id_10 | varchar(30) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+11 rows in set (0.19 sec)
+
+
+
+mysql> desc dev_details;
++--------------+-------------+------+-----+--------------+----------------+
+| Field        | Type        | Null | Key | Default      | Extra          |
++--------------+-------------+------+-----+--------------+----------------+
+| ID           | int(11)     | NO   | PRI | NULL         | auto_increment |
+| name         | varchar(20) | YES  |     | NULL         |                |
+| mac_addr     | varchar(50) | YES  |     | NULL         |                |
+| ip_addr      | varchar(20) | YES  |     | NULL         |                |
+| power_id     | varchar(20) | YES  |     | NULL         |                |
+| dev_type     | varchar(20) | YES  |     | NULL         |                |
+| user_id      | varchar(40) | YES  |     | NULL         |                |
+| group_name   | varchar(20) | NO   |     | 1            |                |
+| query_status | varchar(20) | NO   |     | Not Approved |                |
+| request_age  | varchar(20) | NO   |     | new          |                |
++--------------+-------------+------+-----+--------------+----------------+
+10 rows in set (0.08 sec)
+
+
+mysql> desc dev_query;
++---------------------+-------------+------+-----+----------+----------------+
+| Field               | Type        | Null | Key | Default  | Extra          |
++---------------------+-------------+------+-----+----------+----------------+
+| ID                  | int(11)     | NO   | PRI | NULL     | auto_increment |
+| ip_addr             | varchar(30) | YES  |     | NULL     |                |
+| type_cmd            | varchar(20) | YES  |     | NULL     |                |
+| param_1             | varchar(20) | YES  |     | NULL     |                |
+| param_2             | time        | YES  |     | NULL     |                |
+| email_notifications | varchar(20) | YES  |     | NULL     |                |
+| user_id             | varchar(40) | YES  |     | NULL     |                |
+| group_name          | varchar(20) | NO   |     | 1        |                |
+| query_age           | varchar(20) | NO   |     | new      |                |
+| query_type          | varchar(20) | YES  |     | Custom   |                |
+| query_status        | varchar(20) | YES  |     | Approved |                |
++---------------------+-------------+------+-----+----------+----------------+
+11 rows in set (0.04 sec)
+
+
+
+mysql> desc users;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| email      | varchar(30) | YES  |     | NULL    |       |
+| group_name | varchar(20) | YES  |     | NULL    |       |
+| user_type  | varchar(40) | NO   |     | user    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+
+
+mysql> desc dev_group;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| ip_addr  | varchar(30) | YES  |     | NULL    |       |
+| group_no | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+2 rows in set (0.03 sec)
+
+mysql>
+
+

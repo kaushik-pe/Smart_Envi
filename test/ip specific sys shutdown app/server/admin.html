@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>Client side UI</title>
+        <script src="http://192.168.1.172:5000/socket.io/socket.io.js"></script>
+        <script>
+            var socket=io.connect("http://192.168.1.172:5000");
+            function submit()
+            {
+              var mch=document.getElementById('mch_ip');       
+              socket.emit('shutdown',mch.value);    
+            }
+            function sleep()
+            {
+              var mch=document.getElementById('mch_ip');       
+              socket.emit('sleep',mch.value);    
+            }
+			function wakeup()
+			{
+				var mc_id=document.getElementById('mch_mac');
+				socket.emit('wakeup',mc_id.value);
+			
+			}
+            socket.on('admin_message',function(content){
+            alert(content);    
+        });
+
+    </script>
+    </head>
+        Machine ip <input type='text' id='mch_ip'>
+        <button onclick="submit()">Shut Down</button>
+        <button onclick="sleep()">Sleep</button>
+<br>    
+		Machine MAC ID <input type='text' id='mch_mac'>
+		<button onclick="wakeup()">Wake up</button>
+
+
+
+
+
+
+
+
+
+
+</html>

@@ -1,0 +1,14 @@
+{
+"name":"smart_envi_client",
+"main":"lol.html",
+"window":{
+    "toolbar" : false,
+    "frame"   : false,
+    "show"    : false
+    
+    
+    
+    }
+
+
+}

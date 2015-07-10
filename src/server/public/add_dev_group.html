@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Smart EnvI</title>
+<link rel="shortcut icon" href="images/nw.ico">
+<link rel="stylesheet"  type="text/css" href="stylesheets/bootstrap.min.css">
+<link rel="stylesheet"  type="text/css" href="stylesheets/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+<script src="javascripts/add_dev_group.js"></script>
+
+
+      <style>
+      h6 {
+    position: absolute;
+          top: 10px;
+    right: 80px;
+    
+} 
+    .active{
+    background-color:#eeeeee;        
+    }</style>
+</head>
+<body> 
+            <font color = "#00008B"> 
+      <h6>    <img class='img-circle' src ="<%= user._json.picture%>" height="50" width="50"></img>
+      <a href="/logout" class="btn btn-primary"><span class="fa fa-google-plus"></span> LOGOUT</a></h6>
+    <br>
+    <div class="container">
+
+      <div class="masthead">
+        <h1>Smart Envi</h1>
+        <nav>
+          <ul class="nav nav-justified" >
+              <li><a href="newindex"><b>Home</b></a></li>
+            <li><a href="app_index"><b>View Devices</b></a></li>
+            <li   class="active"><a href="add_device"><b>Add device</b></a></li>
+            <li><a href="newindex"><b>Contact</b></a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Jumbotron -->
+      <div class="jumbotron">
+<div id="add_dev_form">
+    <fieldset>
+          <form id="form" onsubmit='dev_insert("<%=user._json.email%>")'>
+        
+       <div class="row">
+           <div id="errorBox"></div></div>
+              <div class="row">
+           <div class="col-sm-3">         
+       <b>
+           IP address<br><br>
+           Group No<br><br></b>
+
+         </div>
+         <div class="col-sm-5">         
+             
+                <input type="Text" id="ip_addr" required onblur='validate_ip()' ><br><br>
+                <input type="Text" id="group_no" required onblur=''>
+         </div>
+              </div>
+              <center>      <input type="submit" class="btn btn-lg btn-success" id="form_submit" value=" Add Device ">&nbsp;&nbsp;&nbsp;<button id="reset" class="btn btn-lg btn-success"  onclick="reset(add_dev)">Reset</button></center>
+                <br><br><br><br>   
+              <br><br><br><br>
+         </form>
+    </fieldset>
+
+</div>
+              <br>
+    <br>
+      </div>
+    </div> 
+    </font>        
+ </body>
+</html>

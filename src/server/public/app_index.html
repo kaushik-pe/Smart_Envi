@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Smart Envi</title>
+    <link rel="shortcut icon" href="images/nw.ico">
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="stylesheets/intro.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/control_center.js"></script>  
+    <script src="http://192.168.1.175:5000/socket.io/socket.io.js"></script>
+    <script>
+    var socket=io.connect("http://192.168.1.175:5000");
+    function show_status(value)
+        {
+            socket.emit("check_status",value);
+        }
+        socket.on('status',function(content){
+            alert("System is currently :"+content);   
+    
+        });
+    function control(val,com)
+    {
+       alert(val+" "+com);
+        if(com=="shutdown")
+        {
+            socket.emit('shut_down',val);   
+        }
+        else if(com=="hibernate")
+        {
+            socket.emit('hibernate',val);   
+        }
+        else
+        {
+            socket.emit('turnon',val);   
+        }
+    }
+
+    
+    
+    
+    </script>
+</head>
+
+<body onload='show_table("<%= user._json.email%>")'> 
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="http://www.solitontech.com/"><img id="logo" src="images/Logo.jpg"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <img class='img-circle' src ="<%= user._json.picture%>" height="50" width="50"></img>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                    <li>
+                        <a href="newindex">Home</a>
+                    </li>
+                    <li>
+                        <a href="app_index">View devices</a>
+                    </li>
+                    <li>
+                        <a href="add_device">Add devices</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<br>
+  <!-- TABLE-->
+<br><br><br>
+    <div class="well">
+            <div class="fit_area">
+        <h1>Devices you manage!</h1>
+        <b><p>->Click on the "Query" corresponding to the device to view the queries.</p></b>
+        <b><p>->Click on the "View status" corresponding to the device to view the status of the device.</p></b><br><br>
+        <div id="device_table"></div>
+        <br>
+        <p><a class="btn btn-custom" href="add_device">Add devices to control >></a></p>
+        </div>
+    </div>
+  <!-- /.TABLE-->
+</body>
+</html>

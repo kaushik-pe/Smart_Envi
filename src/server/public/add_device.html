@@ -1,0 +1,128 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Smart Envi</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="stylesheets/intro.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
+   <script src="javascripts/script.js"></script> 
+     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script src="http://192.168.1.175:5000/socket.io/socket.io.js"></script>
+    <script>
+    var socket=io.connect("http://192.168.1.175:5000");
+    function getmac()
+        {
+            var value = document.getElementById('ip_addr').value;
+            
+            socket.emit("get_mac",value);
+        }
+        socket.on('mac_val',function(content){
+            document.getElementById('mac_addr').value=content;
+    });
+      
+    </script>    
+
+</head>
+
+<body > 
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="http://www.solitontech.com/"><img id="logo" src="images/Logo.jpg"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <img class='img-circle' src ="<%= user._json.picture%>" height="50" width="50"></img>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                    <li>
+                        <a href="newindex">Home</a>
+                    </li>
+                    <li>
+                        <a href="app_index">View devices</a>
+                    </li>
+                    <li>
+                        <a href="add_device">Add devices</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<br>
+  <!-- FORM TO ADD DEVICE-->
+<br><br><br>
+<div class="well">
+    <div id="add_dev_form">
+        <fieldset>
+            <div id="add_dev" >
+                <div class="row">
+                    <div id="errorBox">
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <center>
+                    <button class="btn btn-lg btn-custom" id="form_submit" onclick='dev_insert("<%=user._json.email%>")'>  Add Device >> </button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-lg btn-custom"  onclick="reset()">Reset >></button>
+                </center><br><br>
+                    <div class="col-sm-3"><b>
+                        Name<br><br><br>
+                         IP address<br><br><br>
+                        Mac address<br><br>
+                        Power Socket ID<br><br>
+                        Device Type<br><br>
+                        Add dependancies&nbsp;
+                            <input type="button" id="btAdd" value=" + " class="bt" /><br><br>
+                        
+                      </div>
+                    <div class="col-sm-5">
+                        <input type="Text" id="nme"  ><br><br>                        
+                        <input type="Text" id="ip_addr" onblur='validate_ip()'>&nbsp;* after entering ip of the device click on auto to get the mac address<br><br>
+                        <input type="Text" id="mac_addr" onblur='validate_mac()'>&nbsp;<label id="label_ip" onmouseover="" style="cursor: pointer;" onclick="getmac()">auto</label><br><br>
+                        <input type="Text" id="power_id" ><br><br>
+                        <select id='dev_type'>
+                            <option value="wemo">Wemo</option>
+                            <option value="cc_3200">cc_3200</option>
+                        </select><br><br>
+                        <div id="dependencies">
+                        </div>
+                        </div>
+                    
+                        </div>
+            </div>
+        </fieldset>
+            </div>
+    </div>
+
+  <!-- /.FORM TO ADD DEVICE-->
+</body>
+</html>

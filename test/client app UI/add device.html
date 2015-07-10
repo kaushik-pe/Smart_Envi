@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Smart EnvI</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>    
+<body>
+<div id="title">Smart EnvI</div>
+<div id="add_dev_form">
+    <fieldset>
+        <legend>Add New device</legend>
+     <form id="add_dev">
+        <div class="form_left">
+              Name<br><br>
+              Mac address<br><br>
+              IP address<br><br>
+              Power Socket ID<br><br>
+              
+         </div> 
+         <div class="form_right">
+                <input type="Text" id="nme"><br><br>
+                <input type="Text" id="mac_addr"><label id="label_ip" onmouseover="" style="cursor: pointer;" onclick="getmac()">auto</label><br><br>
+                <input type="Text" id="ip_addr">&nbsp;<label id="label_ip" onmouseover="" style="cursor: pointer;" onclick="getip()">auto</label><br><br>
+                <input type="Text" id="ip_addr"><br><br>
+                <select>
+                        <option value="pc">PC</option>
+                 </select><br>       
+         </div>
+         <center><input type="submit" value="Add">&nbsp;&nbsp;<button id="reset" onclick="reset(add_dev)">Reset</button></center>
+         </form>
+    </fieldset>
+</div>    
+ </body>
+</html>    

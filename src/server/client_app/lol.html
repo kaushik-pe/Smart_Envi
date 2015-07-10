@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Administrator page</title>
+        <script src="http://192.168.1.188:5000/socket.io/socket.io.js"></script>
+        <script>
+            var socket=io.connect("http://192.168.1.188:5000");
+            var exec = require('child_process').exec;
+            socket.on('admin_message',function(content){
+            if(content=="shutdown")
+            {
+               window.open('popup1.html', 'Smart_ENVI', 'screenX=1000,screenY=1000,width=100,height=100'); 
+            }
+            else if(content=='hibernate')    
+            {
+                window.open('popup2.html', 'Smart_ENVI', 'screenX=1000,screenY=1000,width=100,height=100');
+            }
+            });
+            
+           
+
+    </script>
+    </head>
+     
+</html>

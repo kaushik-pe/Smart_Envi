@@ -1,0 +1,66 @@
+<html>
+ <head>
+ <title>Node.js WebSocket chat</title>
+ <style type="text/css">
+ #input {
+ width: 200px;
+ }
+ #chatbox {
+ position: fixed;
+ top: 40px;
+ bottom: 8px;
+ left: 8px;
+ right: 8px;
+ border: 1px solid #EEEEEE;
+ padding: 8px;
+ }
+ </style>
+ </head>
+ <body>
+ Your message:
+ <input type="text" id="input">
+ <div id="chatbox"></div>
+     
+ <script src="http://192.168.1.141:3333/socket.io/socket.io.js"></script>
+ <script type="text/javascript">
+     
+//appending the text in text box in chatbox     
+     
+ var messagediv = document.getElementById('chatbox');
+ var previousmessage = null;
+     
+ function chatbox(message) {     
+ var newmessage = document.createElement('div');
+ var newtxtmessage = document.createTextNode(message);
+ newmessage.appendChild(newtxtmessage);
+ messagediv.insertBefore(newmessage,previousmessage);
+ previousmessage = newmessage;
+ }
+     
+     
+     
+ var socket = io.connect('http://192.168.1.141:3333');      //establishing socket connection
+ socket.on('serverMessage', function(content) {         
+      chatbox(content);                                 //message emitted by server is displayed in chatbox
+ });
+     
+      socket.on('login',function() {
+         var username= prompt("Give your nickname");
+        console.log(1);
+         socket.emit('login', username);
+     });
+     
+     
+ 
+ var input = document.getElementById('input');          //getting the input value from the textbox
+ input.onkeydown = function(keyboardEvent) {
+          
+ if (keyboardEvent.keyCode === 13) {                    //getting the string before pressing enter key in textbox
+ socket.emit('clientMessage', input.value);
+ input.value = '';
+ }     
+ };
+     
+     </script>
+ </body>
+</html>

@@ -1,0 +1,128 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>Smart Envi</title>
+    <link rel="shortcut icon" href="images/nw.ico">
+    <!-- Bootstrap Core CSS -->
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="stylesheets/intro.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="stylesheets/style.css">
+    <script src="javascripts/group_wrk.js"></script> 
+</head>
+
+<body onload='group_details("<%= user._json.email%>");group_query("<%= user._json.email%>")'> 
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="http://www.solitontech.com/"><img id="logo" src="images/Logo.jpg"></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <img class='img-circle' src ="<%= user._json.picture%>" height="50" width="50"></img>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                    <li>
+                        <a href="newindex">Home</a>
+                    </li>
+                    <li>
+                        <a href="app_index">View devices</a>
+                    </li>
+                    <li>
+                        <a href="add_device">Add devices</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+<br>
+  <!-- Container-->
+<div class="container" id ="normal_bg">
+    <div class="page-header text-center">
+        <br>
+        <br><i>
+          <h1>Admin</h1>
+        <h1>Welcome to Smart Envi</h1></i>
+          <a href="/app_index" class="btn btn-lg btn-custom">USE APP</a>
+    </div>
+
+    <div class="row">
+          <div class="col-sm-12">
+        <div class="well">
+            <div class="well">
+                <!-- GROUP UPDATE -->
+      
+                <strong>Notification!</strong> Notifications of group activities.<br>
+                Click on General details button to view the details of the devices accessed.<br>
+                <br> <div id="count_text"> New requests </div><br> 
+                <a href="/approval"  class="btn btn-lg btn-custom" id='view_que'>View device requests<br></a>
+                <div class="btn btn-lg btn-custom" id='no_view_que'>No new device requests<br></div>
+                <br>
+                <span class="tab"></span>
+                  <!-- TABLE TO VIEW THE DEVICE DETAILS -->
+                <a href="/general_details"  class="btn btn-lg btn-custom" id='device_table_1'>General Details<br></a>
+                  <!-- /.TABLE TO VIEW THE DEVICE DETAILS -->
+                <br><div id="count_text_q"> New changes </div><br>
+                <a href="/approval_q"  class="btn btn-lg btn-custom" id='view_que_q'>view changes in default query<br></a>
+                <div class="btn btn-lg btn-custom" id='no_view_que_q'>No new query changes<br></div>
+            </div>
+       
+        <!-- /.GROUP UPDATE -->
+    </div>
+    </div>
+
+    <div class="row">
+      
+       
+      
+        <!-- PANEL WITH GENERAL APP INFO -->
+        <div class="col-sm-12">
+            <br><br>
+            <div class="well">
+                <h3>General usage Information</h3>
+                <p>You can view on the table above the list of devices and users who have requested/has access to that device.</p>
+                <p>You have the previledge to view, add, delete and edit the queries assigned to the device by the user</p>
+                <div id="view">
+                    <a href="javascript:toggletext('mytext','view','viewless')">View More >></a>
+                </div>
+                <div id="viewless" style="display: none;">
+                    <a href="javascript:toggletext('mytext','view','viewless')">View Less >></a>
+                </div>
+                <div id="mytext" style="display: none;">
+                    <p><br>Click on the Approve/Disapprove to Grant/Deny access to that device to the user.</p>
+                    <p>Click on the ip address to view, add, delete or edit the queries assigned for that device
+                </div>
+                <br>
+            </div>
+        </div>
+        <!-- /.PANEL WITH GENERAL APP INFO -->
+    </div>
+         </div>
+</div>
+</body>
+</html>

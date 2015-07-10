@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>SYSTEM SHUTDOWN NOTIFICATION</title>    
+</head>
+<script>
+    var exec= require('child_process').exec;
+   function confirm()
+    {
+     var tym = document.getElementById('time_limit');
+     if(tym=='now')
+        {
+            exec('shutdown -h'); 
+        }
+     else if(tym=='1_hr')
+     {
+        setTimeout(function(){
+            exec('shutdown -h');
+            
+        },3600000); 
+         
+     }
+    else
+    {
+        setTimeout(function(){
+            exec('shutdown -h');
+            
+        },7200000);   
+        
+        
+    }
+        
+    }
+</script>
+<body>
+      SHUTDOWN TIME <select id='time_limit'>
+         <option value="now" selected>Hibernate NOW</option>
+         <option value="1_hr">Postpone to 1 Hour</option>
+         <option value="2_hr">Postpone to 2 Hours</option>
+         
+         </select>
+         <br>
+         <br>
+      <button onclick="confirm()">Confirm</button>
+                    
+    
+    
+</body>
+</html>
