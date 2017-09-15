@@ -39,4 +39,4 @@ This repository guides to run Smart_Envi app
                                                      dependant_dev
 
 
-                         ->All the table structure is specified in table specification.rtf
+                         ->All the table structure is specified in table specification.rtf. Script to automatically create the database will be added soon.
